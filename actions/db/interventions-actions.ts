@@ -88,7 +88,7 @@ export async function getInterventionsAction(filters?: {
         i.frequency, i.duration_minutes, i.location, i.assigned_to,
         i.created_by, i.created_at, i.updated_at, i.completed_at,
         i.completion_notes,
-        s.student_id as student_number, s.first_name, s.last_name, s.grade,
+        s.student_id as student_number, s.first_name, s.last_name, s.grade, s.status as student_status,
         p.name as program_name,
         u.first_name as assigned_first_name, u.last_name as assigned_last_name
       FROM interventions i
@@ -182,7 +182,7 @@ export async function getInterventionsAction(filters?: {
         last_name: row.lastName as string,
         grade: row.grade as GradeLevel,
         middle_name: undefined,
-        status: 'active' as StudentStatus,
+        status: row.studentStatus as StudentStatus,
         created_at: new Date(),
         updated_at: new Date(),
       },
@@ -243,7 +243,7 @@ export async function getInterventionByIdAction(id: number): Promise<ActionState
         i.frequency, i.duration_minutes, i.location, i.assigned_to,
         i.created_by, i.created_at, i.updated_at, i.completed_at,
         i.completion_notes,
-        s.student_id as student_number, s.first_name, s.last_name, s.grade,
+        s.student_id as student_number, s.first_name, s.last_name, s.grade, s.status as student_status,
         p.name as program_name,
         u.first_name as assigned_first_name, u.last_name as assigned_last_name
       FROM interventions i
@@ -290,7 +290,7 @@ export async function getInterventionByIdAction(id: number): Promise<ActionState
         last_name: row.lastName as string,
         grade: row.grade as GradeLevel,
         middle_name: undefined,
-        status: 'active' as StudentStatus,
+        status: row.studentStatus as StudentStatus,
         created_at: new Date(),
         updated_at: new Date(),
       },
