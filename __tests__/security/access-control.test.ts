@@ -19,6 +19,7 @@ jest.mock("@/actions/db/get-current-user-action", () => ({
 }))
 
 jest.mock("@/lib/logger", () => ({
+  __esModule: true,
   default: {
     warn: jest.fn(),
     error: jest.fn(),

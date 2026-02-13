@@ -5,6 +5,7 @@ jest.mock("@/lib/db/data-api-adapter", () => ({
 }))
 
 jest.mock("@/lib/logger", () => ({
+  __esModule: true,
   default: {
     warn: jest.fn(),
     error: jest.fn(),
